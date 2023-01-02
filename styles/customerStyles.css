@@ -1,0 +1,627 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #2a2185;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation h2{
+  position: relative;
+  color: #fff;
+}
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ==================  profile List ============== */
+.show {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.show .profile {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.show .cardHeader1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader1 h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader1 .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+.show.active{
+  width: 20px;
+}
+.show span.active {
+  padding: 0;
+  top: 100%;
+  color: var(--blue);
+}
+.detail {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--peach);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--peach);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  font-weight: 600;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid #0000001a;
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background: var(--peach);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+}
+
+/* ===================Subscription Design ================ */
+
+::selection{
+  color: #fff;
+  background: rgb(142,197,252);
+}
+.show-btn, .wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.show-btn{
+  color: rgb(142,197,252);
+  padding: 13px 18px;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.wrapper{
+  z-index: 5;
+  background: #fff;
+  padding: 50px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 60%;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+#toggle{
+  display: none;
+}
+#toggle:checked ~ .wrapper{
+  opacity: 0;
+  pointer-events: none;
+  top: 40%;
+}
+.wrapper .cancel-icon{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: rgb(142,197,252);
+  cursor: pointer;
+}
+.cancel-icon:hover{
+  color: rgb(224,195,252);
+}
+.wrapper .icon{
+  height: 110px;
+  width: 110px;
+  background: linear-gradient(136deg, rgb(224,195,252) 0%, rgb(142,197,252) 100%);
+  line-height: 110px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 55px;
+}
+.wrapper .content{
+  margin: 20px 0;
+}
+.content header{
+  font-size: 30px;
+  font-weight: 600;
+}
+.content p{
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: -3px;
+}
+form{
+  width: 120%;
+}
+.field h4{
+  color: #3ab1ab;
+}
+form .field{
+  height: 100px;
+  width: 100%;
+  margin-bottom: 120px;
+}
+form .field input{
+  width: 70%;
+  height: 0%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 15px;
+  outline: none;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+form .field input:focus{
+  border-color: rgb(142,197,252);
+}
+form .btn{
+  height: 47px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+form .btn .layer{
+  height: 100%;
+  width: 300%;
+  position: absolute;
+  left: -100%;
+  background: linear-gradient(136deg, rgb(224,195,252) 0%, rgb(142,197,252) 100%);
+  transition: all 0.4s ease;
+}
+form .btn:hover .layer{
+  left: 0;
+}
+form .btn button{
+  z-index: 1;
+  position: relative;
+  background: none;
+  padding: 0px!important;
+  color: #fff;
+  border: 0px;
+  outline: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+.wrapper .text{
+  margin-top: 5px;
+}
+.alert{
+  margin: -9px 0 12px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.success-alert{
+  color: #155724;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+.error-alert{
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+button {
+  position: relative;
+  padding: 7px;
+}
+
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .show  {
+    grid-template-columns: 1fr;
+  }
+  .profile {
+    overflow-x: auto;
+  }
+  thead{
+    display: none;
+}
+tbody,tr,td{
+    display: block;
+    width: 100%;
+}
+tr{
+    margin-bottom: 2rem;
+}
+td{
+    text-align: right;
+    position: relative;
+}
+td:before{
+    content: attr(data-label);
+    position: absolute;
+    left: 5px;
+}
+}
+
+@media (max-width: 480px) {
+  
+  .cardHeader1 h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+
+/* Customer details */
+ .form h2{
+
+    color: #00ffff;
+    text-transform: uppercase;
+    font-weight: 700;
+
+}
+.form input[type="text"],.form input[type="id"],
+.form input[type="email"], .form input[type="number"],
+.form input[type="phone"], .form input[type="address"], 
+.form input[type="password"]
+{
+    border: 0;
+    background: #ffc0cb;
+    display: block;
+    margin: 20px auto;
+    padding: 14px 10px;
+    width: 220px;
+    outline: none;
+    color: #000000;
+    border-radius: 24px;
+    transition: 0 20px;
+
+}
+.form input[type="text"]:focus,.form input[type="id"]:focus,
+.form input[type="email"]:focus, .form input[type="number"]:focus,
+.form input[type="phone"]:focus, .form input[type="address"]:focus,
+.form input[type="password"]:focus
+{
+        width: 250px;
+        border-color: #5447a0;
+}
+.form input[type="submit"]
+{
+    border: 0;
+    background: #ffc0cb;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 10px;
+    outline: none;
+    color: #b80c0c;
+    border-radius: 24px;
+    transition: 0 20px;
+    cursor: pointer;
+}
+
+/*for radio button*/
+
+.form input[type="submit"]:hover
+{
+    background: #9acd32;
+}
